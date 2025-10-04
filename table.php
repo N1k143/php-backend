@@ -1,8 +1,24 @@
 <?php 
   $cols = 5;
   $rows = 5;
-?>
 
+  function drawTable($cols, $rows, $color) {
+    echo "<table border='1' style='border-collapse: collapse; background-color: #f9f9f9;'>";
+      for ($tr = 1; $tr <= $rows; $tr++) {
+          echo "<tr>";
+          for ($td = 1; $td <= $cols; $td++) {
+              $value = $tr * $td;
+              if ($tr == 1 || $td == 1) {
+                  echo "<td style='font-weight: bold; text-align: center; background-color: $color;'>$value</td>";
+              } else {
+                  echo "<td style='padding:5px 10px;'>$value</td>";
+              }
+          }
+          echo "</tr>";
+        }
+    echo "</table>";
+  }
+  ?>
 
 <!DOCTYPE html>
 <html>
@@ -60,24 +76,7 @@
       <input type='submit' value='Создать' />
     </form>
     <!-- Таблица -->
-    <table border='1' >
-      <?php 
-        for ($tr = 1; $tr <= $rows; $tr++){
-          echo "<tr>";
-          for($td = 1; $td <= $cols; $td++){
-            $value = $tr * $td;
-
-            if($tr == 1 || $td == 1) {
-              echo "<td class='header'>$value</td>";
-            
-            }else {
-              echo "<td>$value</td>";
-            }
-          }
-          echo "</tr>";
-        }
-      ?>
-    </table>
+        <?php drawTable(6, 6, "#ffd966") ?>
     <!-- Таблица -->
     <!-- Область основного контента -->
   </div>

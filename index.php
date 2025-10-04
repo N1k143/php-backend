@@ -23,13 +23,32 @@ if($hour < 6){
 
 <!-- инициализация массива  -->
 <?php 
-  $leftMenu = [
+  $menu = [
     ['link' => 'Домой', 'href' => 'index.php'],
     ['link'=>'О нас', 'href'=>'about.php'],
     ['link'=>'Контакты', 'href'=>'contact.php'],
     ['link'=>'Таблица умножения', 'href'=>'table.php'],
     ['link'=>'Калькулятор', 'href'=>'calc.php'] 
-  ]
+  ];
+
+ 
+
+
+  function drawMenu($menu, $vertical = true){
+    if($vertical){
+      echo "<ul>";
+    foreach($menu as $item): ?>
+      <li><a href="<?=$item['href']?>"><?= $item['link']?></a></li>
+    <?php endforeach;
+      echo "</ul>";
+    }else {
+      echo "<ul style='list-style:none; padding:0; margin:0;'>";
+          foreach($menu as $item): ?>
+      <li style="display:inline; margin-right:15px;"><a href="<?=$item['href']?>"><?= $item['link']?></a></li>
+    <?php endforeach;
+      echo "</ul>";
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,9 +93,9 @@ if($hour < 6){
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-    <?php foreach($leftMenu as $item): ?>
-      <li><a href="<?=$item['href']?>"><?= $item['link']?></a></li>
-    <?php endforeach; ?>
+    <?php 
+      drawMenu($menu, true);
+    ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
