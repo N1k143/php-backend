@@ -1,10 +1,32 @@
+<?php 
+  $cols = 5;
+  $rows = 5;
+?>
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <title>Таблица умножения</title>
   <meta charset="utf-8" />
+        <style>
+        table {
+            border-collapse: collapse;
+            background-color: #f9f9f9; /* фон таблицы */
+        }
+        td {
+            border: 1px solid #000;
+            padding: 5px 10px;
+        }
+        .header {
+            font-weight: bold;
+            text-align: center;
+            background-color: #00dc79ff; /* зелёный оттенок для шапки */
+        }
+    </style>
   <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
@@ -38,42 +60,23 @@
       <input type='submit' value='Создать' />
     </form>
     <!-- Таблица -->
-    <table border='1' width="200">
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>4</td>
-        <td>6</td>
-        <td>8</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>6</td>
-        <td>9</td>
-        <td>12</td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>8</td>
-        <td>12</td>
-        <td>16</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>10</td>
-        <td>15</td>
-        <td>20</td>
-        <td>25</td>
-      </tr>
+    <table border='1' >
+      <?php 
+        for ($tr = 1; $tr <= $rows; $tr++){
+          echo "<tr>";
+          for($td = 1; $td <= $cols; $td++){
+            $value = $tr * $td;
+
+            if($tr == 1 || $td == 1) {
+              echo "<td class='header'>$value</td>";
+            
+            }else {
+              echo "<td>$value</td>";
+            }
+          }
+          echo "</tr>";
+        }
+      ?>
     </table>
     <!-- Таблица -->
     <!-- Область основного контента -->
