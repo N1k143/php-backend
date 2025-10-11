@@ -1,87 +1,33 @@
-<?php require_once 'inc/lib.inc.php'; ?>
+<?php 
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $cols = abs((int) $_POST['cols']);
+    $rows = abs((int) $_POST['rows']);
+    $color = trim(strip_tags($_POST['color']));
+  }
 
-<!DOCTYPE html>
-<html>
+  $cols = ($cols) ? $cols : 10;
+  $rows = ($rows) ? $rows : 10;
+  $color = ($color) ? $color : 'yellow';
+?>
 
-<head>
-  <title>Таблица умножения</title>
-  <meta charset="utf-8" />
-        <style>
-        table {
-            border-collapse: collapse;
-            background-color: #f9f9f9; /* фон таблицы */
-        }
-        td {
-            border: 1px solid #000;
-            padding: 5px 10px;
-        }
-        .header {
-            font-weight: bold;
-            text-align: center;
-            background-color: #00dc79ff; /* зелёный оттенок для шапки */
-        }
-    </style>
-  <link rel="stylesheet" href="style.css" />
-
-</head>
-
-<body>
-
-  <div id="header">
-    <!-- Верхняя часть страницы -->
-    <img src="logo.gif" width="187" height="29" alt="Наш логотип" class="logo" />
-    <span class="slogan">приходите к нам учиться</span>
-    <!-- Верхняя часть страницы -->
-  </div>
-
-  <div id="content">
-    <!-- Заголовок -->
-    <h1>Таблица умножения</h1>
-    <!-- Заголовок -->
     <!-- Область основного контента -->
-    <form action=''>
+    <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST">
       <label>Количество колонок: </label>
       <br />
-      <input name='cols' type='text' value="" />
+      <input name='cols' type='text' value="<?= $cols?>" />
       <br />
       <label>Количество строк: </label>
       <br />
-      <input name='rows' type='text' value="" />
+      <input name='rows' type='text' value="<?= $rows?>" />
       <br />
       <label>Цвет: </label>
       <br />
-      <input name='color' type='text' value="" />
+      <input name='color' type='text' value="<?= $color?>" />
       <br />
       <br />
       <input type='submit' value='Создать' />
     </form>
     <!-- Таблица -->
-        <?php drawTable(6, 6, "#ffd966") ?>
+        <?php drawTable($cols, $rows, $color) ?>
     <!-- Таблица -->
     <!-- Область основного контента -->
-  </div>
-  <div id="nav">
-    <h2>Навигация по сайту</h2>
-    <!-- Меню -->
-    <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
-    </ul>
-    <!-- Меню -->
-  </div>
-  <div id="footer">
-    <!-- Нижняя часть страницы -->
-    &copy; Супер Мега Веб-мастер, 2000 &ndash; 2021
-    <!-- Нижняя часть страницы -->
-  </div>
-</body>
-
-</html>

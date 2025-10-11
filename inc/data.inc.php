@@ -20,3 +20,14 @@ if($hour < 6){
   $welcome = 'Доброй ночи';
 }
 ?>
+
+<!-- инициализация массива  -->
+<?php
+$leftMenu = [
+  ['link' => 'Домой', 'href' => 'index.php'],
+  ['link' => 'О нас', 'href' => 'index.php?id=about'],
+  ['link' => 'Контакты', 'href' => 'index.php?id=contact'],
+  ['link' => 'Таблица умножения', 'href' => 'index.php?id=table'],
+  ['link' => 'Калькулятор', 'href' => 'index.php?id=calc']
+];
+?>
